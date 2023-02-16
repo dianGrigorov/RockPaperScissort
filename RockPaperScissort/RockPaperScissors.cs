@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Channels;
 
 namespace RockPaperScissors
 {
@@ -9,7 +10,7 @@ namespace RockPaperScissors
             const string Rock = "Rock";
             const string Paper = "Paper";
             const string Scissors = "Scissors";
-            Console.Write("Chose [r]ock, [p]aper or [s]cissors:");
+            PlayerInput();
             string playerMove = Console.ReadLine();
 
             if (playerMove == "r" || playerMove == "rock")
@@ -48,13 +49,13 @@ namespace RockPaperScissors
             Console.WriteLine($"The computer chose {computerMove}.");
 
             if ((playerMove == Rock && computerMove == Scissors) ||
-                (playerMove == Paper && computerMove == Rock) || 
+                (playerMove == Paper && computerMove == Rock) ||
                 (playerMove == Scissors && computerMove == Paper))
             {
                 Console.WriteLine("You Win.");
             }
             else if ((playerMove == Rock && computerMove == Paper) ||
-                    (playerMove == Paper && computerMove == Scissors) || 
+                    (playerMove == Paper && computerMove == Scissors) ||
                     (playerMove == Scissors && computerMove == Rock))
             {
                 Console.WriteLine($"You lose.");
@@ -64,6 +65,11 @@ namespace RockPaperScissors
                 Console.WriteLine($"This game was a draw.");
             }
 
+        }
+
+        private static void PlayerInput()
+        {
+            Console.Write("Chose [r]ock, [p]aper or [s]cissors:");
         }
     }
 }
